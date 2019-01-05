@@ -17,6 +17,8 @@ pub struct Personalization {
     #[serde(skip_serializing_if = "HashMap::is_empty")]
     headers: HashMap<String, String>,
     #[serde(skip_serializing_if = "HashMap::is_empty")]
+    substitutions: HashMap<String, String>,
+    #[serde(skip_serializing_if = "HashMap::is_empty")]
     custom_args: HashMap<String, String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     send_at: Option<i32>,
@@ -51,6 +53,7 @@ impl PersonalizationBuilder {
                 bcc: Vec::new(),
                 subject: None,
                 headers: HashMap::new(),
+                substitutions: HashMap::new(),
                 custom_args: HashMap::new(),
                 send_at: None,
             },
@@ -129,6 +132,26 @@ impl PersonalizationBuilder {
     pub fn header<S: Into<String>>(mut self, key: S, value: S) -> Self {
         self.personalization
             .headers
+            .insert(key.into(), value.into());
+        self
+    }
+
+    /// Set a substitution
+    ///
+    /// # Parameters
+    /// key: impl Into<String>
+    /// value: impl Into<String>
+    ///
+    /// # Examples
+    /// ```
+    /// use sendgrid::PersonalizationBuilder;
+    ///
+    /// let builder = PersonalizationBuilder::new()
+    ///               .substitution("Key", "Value");
+    ///```
+    pub fn substitution<S: Into<String>>(mut self, key: S, value: S) -> Self {
+        self.personalization
+            .substitutions
             .insert(key.into(), value.into());
         self
     }
