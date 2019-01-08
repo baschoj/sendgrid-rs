@@ -19,6 +19,8 @@ pub struct Personalization {
     #[serde(skip_serializing_if = "HashMap::is_empty")]
     substitutions: HashMap<String, String>,
     #[serde(skip_serializing_if = "HashMap::is_empty")]
+    dynamic_template_data: HashMap<String, String>,
+    #[serde(skip_serializing_if = "HashMap::is_empty")]
     custom_args: HashMap<String, String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     send_at: Option<i32>,
@@ -54,6 +56,7 @@ impl PersonalizationBuilder {
                 subject: None,
                 headers: HashMap::new(),
                 substitutions: HashMap::new(),
+                dynamic_template_data: HashMap::new(),
                 custom_args: HashMap::new(),
                 send_at: None,
             },
@@ -152,6 +155,26 @@ impl PersonalizationBuilder {
     pub fn substitution<S: Into<String>>(mut self, key: S, value: S) -> Self {
         self.personalization
             .substitutions
+            .insert(key.into(), value.into());
+        self
+    }
+
+    /// Add a dynamic template substitution
+    ///
+    /// # Parameters
+    /// key: impl Into<String>
+    /// value: impl Into<String>
+    ///
+    /// # Examples
+    /// ```
+    /// use sendgrid::PersonalizationBuilder;
+    ///
+    /// let builder = PersonalizationBuilder::new()
+    ///               .dynamic_template_data("Key", "Value");
+    ///```
+    pub fn dynamic_template_data<S: Into<String>>(mut self, key: S, value: S) -> Self {
+        self.personalization
+            .dynamic_template_data
             .insert(key.into(), value.into());
         self
     }
