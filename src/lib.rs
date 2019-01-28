@@ -11,7 +11,7 @@
 //!
 //! # Examples
 //! ```
-//! # use sendgrid::{MessageBuilder, ContactBuilder, PersonalizationBuilder, MailSettingsBuilder};
+//! # use sendgrid_rs::{MessageBuilder, ContactBuilder, PersonalizationBuilder, MailSettingsBuilder};
 //! let api_payload = MessageBuilder::new(
 //!     ContactBuilder::new("from@example.com").name("from").build(),
 //!     "Subject Line!",
@@ -62,7 +62,7 @@ impl AsmBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::AsmBuilder;
+    /// # use sendgrid_rs::AsmBuilder;
     ///
     /// let builder = AsmBuilder::new(1);
     /// ```
@@ -79,7 +79,7 @@ impl AsmBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::AsmBuilder;
+    /// # use sendgrid_rs::AsmBuilder;
     ///
     /// let builder = AsmBuilder::new(1)
     ///     .group_to_display(2)
@@ -94,7 +94,7 @@ impl AsmBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::AsmBuilder;
+    /// # use sendgrid_rs::AsmBuilder;
     ///
     /// let asm = AsmBuilder::new(1).build();
     /// ```
@@ -117,7 +117,7 @@ impl Content {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::Content;
+    /// # use sendgrid_rs::Content;
     ///
     /// let content = Content::new("text/plain", "Message Content");
     /// ```
@@ -157,7 +157,7 @@ impl ContactBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::ContactBuilder;
+    /// # use sendgrid_rs::ContactBuilder;
     ///
     /// let builder = ContactBuilder::new("from@example.com");
     /// ```
@@ -171,7 +171,7 @@ impl ContactBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::ContactBuilder;
+    /// # use sendgrid_rs::ContactBuilder;
     ///
     /// let builder = ContactBuilder::new("from@example.com")
     ///               .name("From");
@@ -185,7 +185,7 @@ impl ContactBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::ContactBuilder;
+    /// # use sendgrid_rs::ContactBuilder;
     ///
     /// let builder = ContactBuilder::new("from@example.com").build();
     /// ```

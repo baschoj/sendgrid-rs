@@ -38,7 +38,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{ContactBuilder, PersonalizationBuilder};
+    /// # use sendgrid_rs::{ContactBuilder, PersonalizationBuilder};
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .to(ContactBuilder::new("to@example.com").build());
@@ -52,7 +52,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{ContactBuilder, PersonalizationBuilder};
+    /// # use sendgrid_rs::{ContactBuilder, PersonalizationBuilder};
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .cc(ContactBuilder::new("cc@example.com").build());
@@ -66,7 +66,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{ContactBuilder, PersonalizationBuilder};
+    /// # use sendgrid_rs::{ContactBuilder, PersonalizationBuilder};
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .bcc(ContactBuilder::new("bcc@example.com").build());
@@ -80,7 +80,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .subject("Subject line");
@@ -98,7 +98,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .header("Key", "Value");
@@ -117,7 +117,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     /// # use std::collections::HashMap;
     ///
     /// let headers: HashMap<String, String> = HashMap::new();
@@ -137,7 +137,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .substitution("Key", "Value");
@@ -157,7 +157,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .dynamic_template_datum("Key", "Value");
@@ -177,7 +177,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     /// # use std::collections::HashMap;
     ///
     /// let substitutions: HashMap<String, String> = HashMap::new();
@@ -197,7 +197,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .custom_arg("Key", "Value");
@@ -213,7 +213,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .send_at(3600);
@@ -227,7 +227,7 @@ impl PersonalizationBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::PersonalizationBuilder;
+    /// # use sendgrid_rs::PersonalizationBuilder;
     ///
     /// let builder = PersonalizationBuilder::default()
     ///               .build();

@@ -79,7 +79,7 @@ impl MessageBuilder {
     /// # Examples
     ///
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -116,7 +116,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder, PersonalizationBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder, PersonalizationBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -137,7 +137,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder, personalization::Personalization};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder, personalization::Personalization};
     ///
     /// let personalizations: Vec<Personalization> = Vec::new();
     /// let builder = MessageBuilder::new(
@@ -156,7 +156,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -175,7 +175,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder, Content};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder, Content};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -195,7 +195,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder, AttachmentBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder, AttachmentBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -217,7 +217,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -234,7 +234,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -251,7 +251,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -268,7 +268,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -285,7 +285,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -302,7 +302,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -319,7 +319,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -337,7 +337,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder, AsmBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder, AsmBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -357,7 +357,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -375,7 +375,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder, MailSettingsBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder, MailSettingsBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -395,7 +395,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder, TrackingSettingsBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder, TrackingSettingsBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -414,7 +414,7 @@ impl MessageBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid_rs::{MessageBuilder, ContactBuilder};
     ///
     /// let message = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
