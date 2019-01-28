@@ -7,8 +7,8 @@ use serde::Serialize;
 use std::collections::HashMap;
 
 /// Message is the wrapper around the entire payload to be sent to SendGrid's API.
-/// Use MessageBuilder to properly construct this. The 'to_json' method is available
-/// to turn this struct into the request body to send to SendGrid
+/// Use [MessageBuilder](struct.MessageBuilder.html) to properly construct this. The `to_json`
+/// method is available to turn this struct into the request body to send to SendGrid
 #[derive(Debug, Serialize)]
 pub struct Message {
     #[serde(skip_serializing_if = "Vec::is_empty")]
@@ -46,7 +46,7 @@ pub struct Message {
 }
 
 impl Message {
-    /// 'to_json' serializes the entire message into JSON. The result of this method call
+    /// `to_json` serializes the entire message into JSON. The result of this method call
     /// should contain the entire body for the HTTP POST to SendGrid. This method will
     /// panic if it is unable to serialize, because it is likely a bug in this crate that
     /// is causing it.
@@ -55,7 +55,7 @@ impl Message {
     }
 }
 
-/// A 'builder pattern' type for constructing 'Message'
+/// A `builder pattern` type for constructing `Message`
 ///
 /// Use this to construct a Message with the desired data.
 /// Make sure you call the 'build' method at the end to
@@ -70,7 +70,7 @@ pub struct MessageBuilder {
 }
 
 impl MessageBuilder {
-    /// Creates a 'MessageBuilder'.
+    /// Creates a `MessageBuilder`.
     ///
     /// # Parameters
     /// from: Contact
@@ -79,7 +79,7 @@ impl MessageBuilder {
     /// # Examples
     ///
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -110,20 +110,20 @@ impl MessageBuilder {
         }
     }
 
-    /// Adds a 'Personalization' to the 'Message'
+    /// Adds a `Personalization` to the `Message`
     /// At least one is required according to the API specification
-    /// Use a 'PersonalizationBuilder' to construct the 'Personalization'
+    /// Use a `PersonalizationBuilder` to construct the `Personalization`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder, PersonalizationBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder, PersonalizationBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
     ///         "Subject Line"
     ///     )
     ///     .personalization(
-    ///         PersonalizationBuilder::new().build()
+    ///         PersonalizationBuilder::default().build()
     ///     );
     /// ```
     pub fn personalization(mut self, per: Personalization) -> Self {
@@ -131,12 +131,32 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds a reply_to 'Contact' to the 'Message'
-    /// Use a 'ContactBuilder' to construct the 'Contact'
+    /// Overwrites personalializations with input data.
+    ///
+    /// Use this to assign many personalizations at once.
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder, personalization::Personalization};
+    ///
+    /// let personalizations: Vec<Personalization> = Vec::new();
+    /// let builder = MessageBuilder::new(
+    ///         ContactBuilder::new("from@example.com").build(),
+    ///         "Subject Line"
+    ///     )
+    ///     .personalizations(personalizations);
+    /// ```
+    pub fn personalizations(mut self, data: Vec<Personalization>) -> Self {
+        self.message.personalizations = data;
+        self
+    }
+
+    /// Adds a reply_to `Contact` to the `Message`
+    /// Use a `ContactBuilder` to construct the `Contact`
+    ///
+    /// # Examples
+    /// ```
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -151,11 +171,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds a 'Content' to to the 'Message'
+    /// Adds a `Content` to to the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder, Content};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder, Content};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -170,12 +190,12 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds an 'Attachment' to the 'Message'
-    /// Use an 'AttachmentBuilder' to construct the 'Attachment'
+    /// Adds an `Attachment` to the `Message`
+    /// Use an `AttachmentBuilder` to construct the `Attachment`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder, AttachmentBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder, AttachmentBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -193,11 +213,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Sets the template id the 'Message' will use.
+    /// Sets the template id the `Message` will use.
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -210,11 +230,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds a section key/value pair to the 'Message'
+    /// Adds a section key/value pair to the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -227,11 +247,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds a header key/value pair to the 'Message'
+    /// Adds a header key/value pair to the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -244,11 +264,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds a category to the 'Message'
+    /// Adds a category to the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -261,11 +281,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds a custom arg to the 'Message'
+    /// Adds a custom arg to the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -278,11 +298,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds a send_at time to the 'Message'
+    /// Adds a send_at time to the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -295,11 +315,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds a batch_id to the 'Message'
+    /// Adds a batch_id to the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -312,12 +332,12 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds an 'Asm' to the 'Message'
-    /// Use 'AsmBuilder' to construct the 'Asm'
+    /// Adds an `Asm` to the `Message`
+    /// Use `AsmBuilder` to construct the `Asm`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder, AsmBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder, AsmBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -333,11 +353,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds the ip_pool_name to the 'Message'
+    /// Adds the ip_pool_name to the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
@@ -350,19 +370,19 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds 'MailSettings' to the 'Message'
-    /// Use 'MailSettingsBuilder' to construct the 'MailSettings'
+    /// Adds `MailSettings` to the `Message`
+    /// Use `MailSettingsBuilder` to construct the `MailSettings`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder, MailSettingsBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder, MailSettingsBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
     ///         "Subject Line"
     ///         )
     ///         .mail_settings(
-    ///             MailSettingsBuilder::new().build()
+    ///             MailSettingsBuilder::default().build()
     ///         );
     /// ```
     pub fn mail_settings(mut self, settings: MailSettings) -> Self {
@@ -370,19 +390,19 @@ impl MessageBuilder {
         self
     }
 
-    /// Adds 'TrackingSettings' to the 'Message'
-    /// Use 'TrackingSettingsBuilder' to construct the 'TrackingSettings'
+    /// Adds `TrackingSettings` to the `Message`
+    /// Use `TrackingSettingsBuilder` to construct the `TrackingSettings`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder, TrackingSettingsBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder, TrackingSettingsBuilder};
     ///
     /// let builder = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),
     ///         "Subject Line"
     ///         )
     ///         .tracking_settings(
-    ///             TrackingSettingsBuilder::new().build()
+    ///             TrackingSettingsBuilder::default().build()
     ///         );
     /// ```
     pub fn tracking_settings(mut self, settings: TrackingSettings) -> Self {
@@ -390,11 +410,11 @@ impl MessageBuilder {
         self
     }
 
-    /// Consumes the 'MessageBuilder' and returns the 'Message'
+    /// Consumes the `MessageBuilder` and returns the `Message`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::{MessageBuilder, ContactBuilder};
+    /// # use sendgrid::{MessageBuilder, ContactBuilder};
     ///
     /// let message = MessageBuilder::new(
     ///         ContactBuilder::new("from@example.com").build(),

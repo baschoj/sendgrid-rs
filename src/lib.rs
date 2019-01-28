@@ -1,3 +1,33 @@
+//! This crate is a wrapper around SendGrid's v3 API using builder patterns to construct a payload
+//! to send. This crate does not have batteries included, does not perform any validations, and
+//! makes no assumptions other than what's specified in SendGrid's API documentation. To actually
+//! call the API, you must use some other mechnism for the HTTP connection (such as the reqwest
+//! crate).
+//!
+//! Everything stems from [Message](message/struct.Message.html) which you can construct using a
+//! [MessageBuilder](message/struct.MessageBuilder.html). When you're done with the
+//! `MessageBuilder` call `build()` to get the underlying `Message` and `to_json()` to get the
+//! entire `Message` output as a JSON string.
+//!
+//! # Examples
+//! ```
+//! # use sendgrid::{MessageBuilder, ContactBuilder, PersonalizationBuilder, MailSettingsBuilder};
+//! let api_payload = MessageBuilder::new(
+//!     ContactBuilder::new("from@example.com").name("from").build(),
+//!     "Subject Line!",
+//! )
+//! .template_id("SENDGRID-TEMPLATE-ID")
+//! // Don't Actually send email. If you want to really send the email, delete the line below
+//! .mail_settings(MailSettingsBuilder::default().sandbox_mode().build())
+//! .personalization(
+//!     PersonalizationBuilder::default()
+//!         .to(ContactBuilder::new("to@example.com").name("to").build())
+//!         .build(),
+//! )
+//! .build()
+//! .to_json();
+//! ```
+
 use serde::Serialize;
 
 pub mod attachment;
@@ -6,34 +36,33 @@ pub mod message;
 pub mod personalization;
 pub mod tracking_settings;
 
-pub type MessageBuilder = crate::message::MessageBuilder;
-pub type PersonalizationBuilder = crate::personalization::PersonalizationBuilder;
-pub type AttachmentBuilder = crate::attachment::AttachmentBuilder;
-pub type MailSettingsBuilder = crate::mail_settings::MailSettingsBuilder;
-pub type TrackingSettingsBuilder = crate::tracking_settings::TrackingSettingsBuilder;
-pub type GaTrackingSettingBuilder = crate::tracking_settings::GaTrackingSettingBuilder;
+pub use crate::attachment::AttachmentBuilder;
+pub use crate::mail_settings::MailSettingsBuilder;
+pub use crate::message::MessageBuilder;
+pub use crate::personalization::PersonalizationBuilder;
+pub use crate::tracking_settings::{GaTrackingSettingBuilder, TrackingSettingsBuilder};
 
-/// 'Asm' is the struct used for SendGrid's asm fields for managing subscriptions
-/// Use 'AsmBuilder' to construct this when adding it to a 'Message'
+/// Type used for SendGrid's asm fields for managing subscriptions
+/// Use `AsmBuilder` to construct this when adding it to a `Message`
 #[derive(Debug, Serialize)]
 pub struct Asm {
     group_id: i32,
     groups_to_display: Vec<i32>,
 }
 
-/// A builder pattern for constructing 'Asm'
-/// Make sure you call 'build()' to consume the builder and retrieve the underyling 'Asm'
+/// A builder pattern for constructing `Asm`
+/// Make sure you call `build()` to consume the builder and retrieve the underyling `Asm`
 pub struct AsmBuilder {
     asm: Asm,
 }
 
 impl AsmBuilder {
-    /// Creates the builder. 'group_id' is the only required paramteter which is associated
-    /// to the SendGrid group_id for Asm subscriptions
+    /// Creates the builder. `group_id` is the only required paramteter which is associated
+    /// to the SendGrid group_id for `Asm` subscriptions
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::AsmBuilder;
+    /// # use sendgrid::AsmBuilder;
     ///
     /// let builder = AsmBuilder::new(1);
     /// ```
@@ -46,11 +75,11 @@ impl AsmBuilder {
         }
     }
 
-    /// Adds a display group to the 'Asm'
+    /// Adds a display group to the `Asm`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::AsmBuilder;
+    /// # use sendgrid::AsmBuilder;
     ///
     /// let builder = AsmBuilder::new(1)
     ///     .group_to_display(2)
@@ -61,11 +90,11 @@ impl AsmBuilder {
         self
     }
 
-    /// Consumes the 'AsmBuilder' and returns the underlying 'Asm'
+    /// Consumes the `AsmBuilder` and returns the underlying `Asm`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::AsmBuilder;
+    /// # use sendgrid::AsmBuilder;
     ///
     /// let asm = AsmBuilder::new(1).build();
     /// ```
@@ -74,7 +103,7 @@ impl AsmBuilder {
     }
 }
 
-/// 'Content' is the struct used to add content fields on SendGrid's API
+/// `Content` is the struct used to add content fields on SendGrid's API
 /// This is essentially a key/value store that serializes into the correct format
 #[derive(Debug, Serialize)]
 pub struct Content {
@@ -84,11 +113,11 @@ pub struct Content {
 }
 
 impl Content {
-    /// Constructs a 'Content', this requires a content type (mime type) and value
+    /// Constructs a `Content`, this requires a content type (mime type) and value
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::Content;
+    /// # use sendgrid::Content;
     ///
     /// let content = Content::new("text/plain", "Message Content");
     /// ```
@@ -101,7 +130,7 @@ impl Content {
 }
 
 /// Struct that holds the data needed for the 'contact' section in the SendGrid API.
-/// Use a 'ContactBuilder' to construct this.
+/// Use a `ContactBuilder` to construct this.
 #[derive(Serialize, Debug)]
 pub struct Contact {
     email: String,
@@ -117,18 +146,18 @@ impl Contact {
     }
 }
 
-/// Builder pattern for 'Contact'. Make sure you call 'build()' when you're done to consume the
-/// builder and return the underlying 'Contact'.
+/// Builder pattern for `Contact`. Make sure you call `build()` when you're done to consume the
+/// builder and return the underlying `Contact`.
 pub struct ContactBuilder {
     contact: Contact,
 }
 
 impl ContactBuilder {
-    /// Construct a new 'ContactBuilder'. Email address is the only required parameter
+    /// Construct a new `ContactBuilder`. Email address is the only required parameter
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::ContactBuilder;
+    /// # use sendgrid::ContactBuilder;
     ///
     /// let builder = ContactBuilder::new("from@example.com");
     /// ```
@@ -138,11 +167,11 @@ impl ContactBuilder {
         }
     }
 
-    /// Set the name of the 'Contact'
+    /// Set the name of the `Contact`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::ContactBuilder;
+    /// # use sendgrid::ContactBuilder;
     ///
     /// let builder = ContactBuilder::new("from@example.com")
     ///               .name("From");
@@ -152,11 +181,11 @@ impl ContactBuilder {
         self
     }
 
-    /// Consume the builder and return the underlying 'Contact'
+    /// Consume the builder and return the underlying `Contact`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::ContactBuilder;
+    /// # use sendgrid::ContactBuilder;
     ///
     /// let builder = ContactBuilder::new("from@example.com").build();
     /// ```

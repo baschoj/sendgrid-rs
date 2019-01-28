@@ -1,7 +1,7 @@
 use serde::Serialize;
 
 /// Struct used for serializing the ClickTracking node into SendGrid's API format. Use
-/// 'TrackingSettingsBuilder' to configure this.
+/// `TrackingSettingsBuilder` to configure this.
 #[derive(Serialize, Debug)]
 pub struct ClickTrackingSetting {
     enable: bool,
@@ -9,7 +9,7 @@ pub struct ClickTrackingSetting {
 }
 
 /// Struct used for serializing the OpenTracking node into SendGrid's API format. Use
-/// 'TrackingSettingsBuilder' to configure this.
+/// `TrackingSettingsBuilder` to configure this.
 #[derive(Serialize, Debug)]
 pub struct OpenTrackingSetting {
     enable: bool,
@@ -17,7 +17,7 @@ pub struct OpenTrackingSetting {
 }
 
 /// Struct used for serializing the SubscriptionTracking node into SendGrid's API format. Use
-/// 'TrackingSettingsBuilder' to configure this.
+/// `TrackingSettingsBuilder` to configure this.
 #[derive(Serialize, Debug)]
 pub struct SubscriptionTrackingSetting {
     enable: bool,
@@ -27,7 +27,7 @@ pub struct SubscriptionTrackingSetting {
 }
 
 /// Struct used for serializing the GaTracking  node into SendGrid's API format. Use
-/// 'GaTrackingSettingBuilder' to construct this.
+/// `GaTrackingSettingBuilder` to construct this.
 #[derive(Serialize, Debug)]
 pub struct GaTrackingSetting {
     enable: bool,
@@ -38,48 +38,34 @@ pub struct GaTrackingSetting {
     utm_campaign: Option<String>,
 }
 
-/// Builder pattern for constructing 'GaTrackingSetting'. Make sure you call 'build()' when done to
-/// consume this and return the underlying 'GaTrackingSetting'
+impl Default for GaTrackingSetting {
+    fn default() -> GaTrackingSetting {
+        GaTrackingSetting {
+            enable: true,
+            utm_source: None,
+            utm_medium: None,
+            utm_term: None,
+            utm_content: None,
+            utm_campaign: None,
+        }
+    }
+}
+
+/// Builder pattern for constructing `GaTrackingSetting`. Make sure you call `build()` when done to
+/// consume this and return the underlying `GaTrackingSetting`, Construct with `default()`.
+#[derive(Default)]
 pub struct GaTrackingSettingBuilder {
     setting: GaTrackingSetting,
 }
 
-impl Default for GaTrackingSettingBuilder {
-    fn default() -> Self {
-        GaTrackingSettingBuilder::new()
-    }
-}
-
 impl GaTrackingSettingBuilder {
-    /// Constructs a 'GaTrackingSettingBuilder'. There are no required parameters, but calling this
-    /// sets the 'enabled' flag to true in the SendGrid API call.
+    /// Sets the GA utm_source for the `GaTrackingSetting`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid::GaTrackingSettingBuilder;
     ///
-    /// let builder = GaTrackingSettingBuilder::new();
-    /// ```
-    pub fn new() -> Self {
-        GaTrackingSettingBuilder {
-            setting: GaTrackingSetting {
-                enable: true,
-                utm_source: None,
-                utm_medium: None,
-                utm_term: None,
-                utm_content: None,
-                utm_campaign: None,
-            },
-        }
-    }
-
-    /// Sets the GA utm_source for the 'GaTrackingSetting'
-    ///
-    /// # Examples
-    /// ```
-    /// use sendgrid::GaTrackingSettingBuilder;
-    ///
-    /// let builder = GaTrackingSettingBuilder::new()
+    /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_source("source");
     /// ```
     pub fn utm_source(mut self, source: impl Into<String>) -> Self {
@@ -87,13 +73,13 @@ impl GaTrackingSettingBuilder {
         self
     }
 
-    /// Sets the GA utm_medium for the 'GaTrackingSetting'
+    /// Sets the GA utm_medium for the `GaTrackingSetting`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid::GaTrackingSettingBuilder;
     ///
-    /// let builder = GaTrackingSettingBuilder::new()
+    /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_medium("medium");
     /// ```
     pub fn utm_medium(mut self, medium: impl Into<String>) -> Self {
@@ -101,13 +87,13 @@ impl GaTrackingSettingBuilder {
         self
     }
 
-    /// Sets the GA utm_term for the 'GaTrackingSetting'
+    /// Sets the GA utm_term for the `GaTrackingSetting`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid::GaTrackingSettingBuilder;
     ///
-    /// let builder = GaTrackingSettingBuilder::new()
+    /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_term("term");
     /// ```
     pub fn utm_term(mut self, term: impl Into<String>) -> Self {
@@ -115,13 +101,13 @@ impl GaTrackingSettingBuilder {
         self
     }
 
-    /// Sets the GA utm_content for the 'GaTrackingSetting'
+    /// Sets the GA utm_content for the `GaTrackingSetting`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid::GaTrackingSettingBuilder;
     ///
-    /// let builder = GaTrackingSettingBuilder::new()
+    /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_content("content");
     /// ```
     pub fn utm_content(mut self, content: impl Into<String>) -> Self {
@@ -129,13 +115,13 @@ impl GaTrackingSettingBuilder {
         self
     }
 
-    /// Sets the GA utm_campaign for the 'GaTrackingSetting'
+    /// Sets the GA utm_campaign for the `GaTrackingSetting`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid::GaTrackingSettingBuilder;
     ///
-    /// let builder = GaTrackingSettingBuilder::new()
+    /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_campaign("campaign");
     /// ```
     pub fn utm_campaign(mut self, campaign: impl Into<String>) -> Self {
@@ -143,22 +129,22 @@ impl GaTrackingSettingBuilder {
         self
     }
 
-    /// Consumes the builder and returns the underlying 'GaTrackingSetting'
+    /// Consumes the builder and returns the underlying `GaTrackingSetting`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid::GaTrackingSettingBuilder;
     ///
-    /// let setting = GaTrackingSettingBuilder::new().build();
+    /// let setting = GaTrackingSettingBuilder::default().build();
     /// ```
     pub fn build(self) -> GaTrackingSetting {
         self.setting
     }
 }
 
-/// Configures the SendGrid API node for TrackingSettings. Use 'TrackingSettingsBuilder' to
+/// Configures the SendGrid API node for TrackingSettings. Use `TrackingSettingsBuilder` to
 /// construct this.
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Default, Debug)]
 pub struct TrackingSettings {
     click_tracking: Option<ClickTrackingSetting>,
     open_tracking: Option<OpenTrackingSetting>,
@@ -166,46 +152,22 @@ pub struct TrackingSettings {
     ganalytics: Option<GaTrackingSetting>,
 }
 
-/// Builder pattern for 'TrackingSettings'. Make sure you call 'build()' to consume this and return
-/// the underlying 'TrackingSetting'
+/// Builder pattern for `TrackingSettings`. Make sure you call `build()` to consume this and return
+/// the underlying `TrackingSetting`. Construct with default().
+#[derive(Default)]
 pub struct TrackingSettingsBuilder {
     settings: TrackingSettings,
 }
 
-impl Default for TrackingSettingsBuilder {
-    fn default() -> Self {
-        TrackingSettingsBuilder::new()
-    }
-}
-
 impl TrackingSettingsBuilder {
-    /// Constructs a new 'TrackingSettingsBuilder'. There are no required parameters.
-    ///
-    /// # Examples
-    /// ```
-    /// use sendgrid::TrackingSettingsBuilder;
-    ///
-    /// let builder = TrackingSettingsBuilder::new();
-    /// ```
-    pub fn new() -> Self {
-        TrackingSettingsBuilder {
-            settings: TrackingSettings {
-                click_tracking: None,
-                open_tracking: None,
-                subscription_tracking: None,
-                ganalytics: None,
-            },
-        }
-    }
-
     /// Sets the click_tracking setting enabled to be true. Pass true to this method to enable text
     /// tracking as well.
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::TrackingSettingsBuilder;
+    /// # use sendgrid::TrackingSettingsBuilder;
     ///
-    /// let builder = TrackingSettingsBuilder::new()
+    /// let builder = TrackingSettingsBuilder::default()
     ///               .click_tracking(true);
     /// ```
     pub fn click_tracking(mut self, enable_text: bool) -> Self {
@@ -221,9 +183,9 @@ impl TrackingSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::TrackingSettingsBuilder;
+    /// # use sendgrid::TrackingSettingsBuilder;
     ///
-    /// let builder = TrackingSettingsBuilder::new()
+    /// let builder = TrackingSettingsBuilder::default()
     ///               .open_tracking("[OPEN_TAG]");
     /// ```
     pub fn open_tracking(mut self, substitution_tag: impl Into<String>) -> Self {
@@ -242,9 +204,9 @@ impl TrackingSettingsBuilder {
     /// html: Option<String>
     /// # Examples
     /// ```
-    /// use sendgrid::TrackingSettingsBuilder;
+    /// # use sendgrid::TrackingSettingsBuilder;
     ///
-    /// let builder = TrackingSettingsBuilder::new()
+    /// let builder = TrackingSettingsBuilder::default()
     ///               .substitution_tag("[SUBSTITUTION_TAG]", None, None);
     /// ```
     pub fn substitution_tag(
@@ -262,13 +224,13 @@ impl TrackingSettingsBuilder {
         self
     }
 
-    /// Consumes the 'TrackingSettingsBuilder' and returns the underlying 'TrackingSettings'
+    /// Consumes the `TrackingSettingsBuilder` and returns the underlying `TrackingSettings`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::TrackingSettingsBuilder;
+    /// # use sendgrid::TrackingSettingsBuilder;
     ///
-    /// let setting = TrackingSettingsBuilder::new().build();
+    /// let setting = TrackingSettingsBuilder::default().build();
     /// ```
     pub fn build(self) -> TrackingSettings {
         self.settings

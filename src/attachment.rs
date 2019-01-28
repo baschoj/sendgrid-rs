@@ -1,7 +1,7 @@
 use serde::Serialize;
 
 /// This is a struct for serializing SendGrid API attachments.
-/// Use 'AttachmentBuilder' to construct these.
+/// Use `AttachmentBuilder` to construct these.
 #[derive(Serialize, Debug)]
 pub struct Attachment {
     content: String,
@@ -12,19 +12,19 @@ pub struct Attachment {
     content_id: Option<String>,
 }
 
-/// Builder pattern for creating an 'Attachment'
-/// Make sure you call 'build()' when done to consume the builder and return the underlying 'Attachment'
+/// Builder pattern for creating an `Attachment`
+/// Make sure you call `build()` when done to consume the builder and return the underlying `Attachment`
 pub struct AttachmentBuilder {
     attachment: Attachment,
 }
 
 impl AttachmentBuilder {
-    /// Constructs an 'AttachmentBuilder'. The required parameters are the content (base64 string)
+    /// Constructs an `AttachmentBuilder`. The required parameters are the content (base64 string)
     /// and the filename.
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::AttachmentBuilder;
+    /// # use sendgrid::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
@@ -42,11 +42,11 @@ impl AttachmentBuilder {
         }
     }
 
-    /// Sets the mime type on the 'Attachment'
+    /// Sets the mime type on the `Attachment`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::AttachmentBuilder;
+    /// # use sendgrid::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
@@ -58,11 +58,11 @@ impl AttachmentBuilder {
         self
     }
 
-    /// Sets the disposition of the 'Attachment'
+    /// Sets the disposition of the `Attachment`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::AttachmentBuilder;
+    /// # use sendgrid::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
@@ -74,11 +74,11 @@ impl AttachmentBuilder {
         self
     }
 
-    /// Sets the content_id of the 'Attachment'
+    /// Sets the content_id of the `Attachment`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::AttachmentBuilder;
+    /// # use sendgrid::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
@@ -90,11 +90,11 @@ impl AttachmentBuilder {
         self
     }
 
-    /// Consumes the 'AttachmentBuilder' and returns the underlying 'Attachment'
+    /// Consumes the `AttachmentBuilder` and returns the underlying `Attachment`
     ///
     /// # Examples
     /// ```
-    /// use sendgrid::AttachmentBuilder;
+    /// # use sendgrid::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
