@@ -1,8 +1,18 @@
 [package]
-name = "sendgrid"
+name = "sendgrid-rs"
 version = "0.1.0"
+description = "A \"no batteries included\", \"no assumptions made\" wrapper around SendGrid's mail API"
+keywords = ["sendgrid", "smtp", "email", "api"]
+categories = ["api-bindings"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+documentation = "https://docs.rs/sendgrid-rs"
+homepage = "https://github.com/baschoj/sendgrid-rs"
+repository = "https://github.com/baschoj/sendgrid-rs.git"
+maintenance = { status = "passively-maintained" }
 authors = ["Bruce Schojan <bruce@basjr.com>"]
 edition = "2018"
+exclude = ["examples/"]
 
 [dependencies]
 serde = {version = "1.0", features = ["derive"]}
