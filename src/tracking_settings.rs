@@ -63,7 +63,7 @@ impl GaTrackingSettingBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid_rs::GaTrackingSettingBuilder;
     ///
     /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_source("source");
@@ -77,7 +77,7 @@ impl GaTrackingSettingBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid_rs::GaTrackingSettingBuilder;
     ///
     /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_medium("medium");
@@ -91,7 +91,7 @@ impl GaTrackingSettingBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid_rs::GaTrackingSettingBuilder;
     ///
     /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_term("term");
@@ -105,7 +105,7 @@ impl GaTrackingSettingBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid_rs::GaTrackingSettingBuilder;
     ///
     /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_content("content");
@@ -119,7 +119,7 @@ impl GaTrackingSettingBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid_rs::GaTrackingSettingBuilder;
     ///
     /// let builder = GaTrackingSettingBuilder::default()
     ///               .utm_campaign("campaign");
@@ -133,7 +133,7 @@ impl GaTrackingSettingBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::GaTrackingSettingBuilder;
+    /// # use sendgrid_rs::GaTrackingSettingBuilder;
     ///
     /// let setting = GaTrackingSettingBuilder::default().build();
     /// ```
@@ -165,7 +165,7 @@ impl TrackingSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::TrackingSettingsBuilder;
+    /// # use sendgrid_rs::TrackingSettingsBuilder;
     ///
     /// let builder = TrackingSettingsBuilder::default()
     ///               .click_tracking(true);
@@ -183,7 +183,7 @@ impl TrackingSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::TrackingSettingsBuilder;
+    /// # use sendgrid_rs::TrackingSettingsBuilder;
     ///
     /// let builder = TrackingSettingsBuilder::default()
     ///               .open_tracking("[OPEN_TAG]");
@@ -204,7 +204,7 @@ impl TrackingSettingsBuilder {
     /// html: Option<String>
     /// # Examples
     /// ```
-    /// # use sendgrid::TrackingSettingsBuilder;
+    /// # use sendgrid_rs::TrackingSettingsBuilder;
     ///
     /// let builder = TrackingSettingsBuilder::default()
     ///               .substitution_tag("[SUBSTITUTION_TAG]", None, None);
@@ -228,7 +228,7 @@ impl TrackingSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::TrackingSettingsBuilder;
+    /// # use sendgrid_rs::TrackingSettingsBuilder;
     ///
     /// let setting = TrackingSettingsBuilder::default().build();
     /// ```

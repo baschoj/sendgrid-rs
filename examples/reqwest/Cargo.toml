@@ -1,9 +1,9 @@
 [package]
 name = "reqwest"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Bruce Schojan <bruce@basjr.com>"]
 edition = "2018"
 
 [dependencies]
-sendgrid = { git = "https://github.com/baschoj/sendgrid-rs/" }
+sendgrid-rs = "0.1"
 reqwest = "0.9"

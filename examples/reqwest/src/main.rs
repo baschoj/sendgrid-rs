@@ -1,4 +1,4 @@
-use sendgrid::{ContactBuilder, MailSettingsBuilder, MessageBuilder, PersonalizationBuilder};
+use sendgrid_rs::{ContactBuilder, MailSettingsBuilder, MessageBuilder, PersonalizationBuilder};
 
 fn build_api_email() -> String {
     MessageBuilder::new(

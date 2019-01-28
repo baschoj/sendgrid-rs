@@ -24,7 +24,7 @@ impl AttachmentBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::AttachmentBuilder;
+    /// # use sendgrid_rs::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
@@ -46,7 +46,7 @@ impl AttachmentBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::AttachmentBuilder;
+    /// # use sendgrid_rs::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
@@ -62,7 +62,7 @@ impl AttachmentBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::AttachmentBuilder;
+    /// # use sendgrid_rs::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
@@ -78,7 +78,7 @@ impl AttachmentBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::AttachmentBuilder;
+    /// # use sendgrid_rs::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",
@@ -94,7 +94,7 @@ impl AttachmentBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::AttachmentBuilder;
+    /// # use sendgrid_rs::AttachmentBuilder;
     ///
     /// let builder = AttachmentBuilder::new(
     ///                 "SGVsbG8gV29ybGQh",

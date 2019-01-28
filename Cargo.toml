@@ -1,6 +1,6 @@
 [package]
 name = "sendgrid-rs"
-version = "0.1.0"
+version = "0.1.1"
 description = "A \"no batteries included\", \"no assumptions made\" wrapper around SendGrid's mail API"
 keywords = ["sendgrid", "smtp", "email", "api"]
 categories = ["api-bindings"]

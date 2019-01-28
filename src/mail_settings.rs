@@ -24,7 +24,7 @@ impl MailSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::MailSettingsBuilder;
+    /// # use sendgrid_rs::MailSettingsBuilder;
     ///
     /// let builder = MailSettingsBuilder::default()
     ///               .bcc("bcc@example.com");
@@ -41,7 +41,7 @@ impl MailSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::MailSettingsBuilder;
+    /// # use sendgrid_rs::MailSettingsBuilder;
     ///
     /// let builder = MailSettingsBuilder::default()
     ///               .bypass_list_management();
@@ -56,7 +56,7 @@ impl MailSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::MailSettingsBuilder;
+    /// # use sendgrid_rs::MailSettingsBuilder;
     ///
     /// let builder = MailSettingsBuilder::default()
     ///               .footer(Some(String::from("text footer")), Some(String::from("<h1>HTML Footer</h1>")));
@@ -74,7 +74,7 @@ impl MailSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::MailSettingsBuilder;
+    /// # use sendgrid_rs::MailSettingsBuilder;
     ///
     /// let builder = MailSettingsBuilder::default()
     ///               .sandbox_mode();
@@ -92,7 +92,7 @@ impl MailSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::MailSettingsBuilder;
+    /// # use sendgrid_rs::MailSettingsBuilder;
     ///
     /// let builder = MailSettingsBuilder::default()
     ///               .spam_check(Some(5), Some(String::from("http://post_url")));
@@ -110,7 +110,7 @@ impl MailSettingsBuilder {
     ///
     /// # Examples
     /// ```
-    /// # use sendgrid::MailSettingsBuilder;
+    /// # use sendgrid_rs::MailSettingsBuilder;
     ///
     /// let builder = MailSettingsBuilder::default()
     ///               .build();
